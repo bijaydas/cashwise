@@ -1,0 +1,6 @@
+parameters:
+    level: 5
+    paths:
+        - app
+    stubFiles:
+        - phpstan/stubs/livewire_view_stubs.php
