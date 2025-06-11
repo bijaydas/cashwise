@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
-enum UserType: string
+use App\Helpers\EnumHelper;
+
+enum UserRole: string
 {
+    use EnumHelper;
+
     case ADMIN = 'admin';
     case USER = 'user';
 }
