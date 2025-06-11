@@ -37,9 +37,6 @@ class User
 
     /**
      * Check if the email is already taken.
-     *
-     * @param string $email
-     * @return bool
      */
     public function isEmailTaken(string $email): bool
     {

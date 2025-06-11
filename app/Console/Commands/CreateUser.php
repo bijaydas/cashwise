@@ -30,7 +30,6 @@ class CreateUser extends Command
     private function getEmail(): string
     {
         $email = $this->ask('Enter email');
-
         /**
          * Check if the email is valid
          */
@@ -80,19 +79,23 @@ class CreateUser extends Command
 
     private function createUser(): void
     {
-        $name = $this->getUserName();
-        $email = $this->getEmail();
-        $password = $this->getPassword();
-        $role = $this->getRole();
+        try {
+            $name = $this->getUserName();
+            $email = $this->getEmail();
+            $password = $this->getPassword();
+            $role = $this->getRole();
 
-        $this->service->create([
-            'name' => $name,
-            'email' => $email,
-            'password' => $password,
-            'role' => $role,
-        ]);
+            $this->service->create([
+                'name' => $name,
+                'email' => $email,
+                'password' => $password,
+                'role' => $role,
+            ]);
 
-        $this->info(sprintf('User created successfully. Visit %s to login.', URL::to('/login')));
+            $this->info(sprintf('User created successfully. Visit %s to login.', URL::to('/login')));
+        } catch (\InvalidArgumentException $e) {
+            $this->error($e->getMessage());
+        }
     }
 
     public function handle(): void
