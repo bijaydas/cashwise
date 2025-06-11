@@ -16,6 +16,10 @@ class User
             throw new \InvalidArgumentException('Email and password are required.');
         }
 
+        if (filter_var($data['email'], FILTER_VALIDATE_EMAIL) === false) {
+            throw new \InvalidArgumentException('Invalid email address.');
+        }
+
         if ($this->isEmailTaken($data['email'])) {
             throw new \InvalidArgumentException('Email is already taken.');
         }
