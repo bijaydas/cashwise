@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\AccountStatus;
+use App\Enums\UserType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +19,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('avatar')->nullable();
+            $table->string('account_type', 50)->default(UserType::USER->value);
+            $table->string('account_status', 50)->default(AccountStatus::ACTIVE->value);
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

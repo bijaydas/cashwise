@@ -3,4 +3,6 @@ parameters:
     paths:
         - app
     stubFiles:
-        - phpstan/stubs/livewire_view_stubs.php
+        - stubs/View.php
+    excludePaths:
+        - phpstan/stubs/*.php
