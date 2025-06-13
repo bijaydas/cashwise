@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Livewire\Auth;
 
+use App\Services\User as UserService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use App\Services\User as UserService;
-use Illuminate\Support\Facades\Auth;
 
 class Login extends Component
 {
     #[Validate('required|email')]
-    public string $email = 'me@bijaydas.com';
+    public string $email = '';
 
     #[Validate('required|min:8')]
-    public string $password = 'Admin@#8855';
+    public string $password = '';
 
     public function submit(): void
     {
@@ -38,7 +38,6 @@ class Login extends Component
         } catch (\Throwable $e) {
             $this->addError('error', $e->getMessage());
         }
-
     }
 
     public function render(): View
