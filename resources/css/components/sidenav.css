@@ -1,0 +1,25 @@
+@layer utilities {
+    .sidenav {
+
+    }
+
+    .sidenav section.section {
+        @apply px-4 py-2;
+    }
+
+    .sidenav section.section .label {
+        @apply text-gray-500 text-sm uppercase font-bold;
+    }
+
+    .sidenav section.section ul {
+        @apply ml-4 mt-2 flex flex-col;
+    }
+
+    .sidenav section.section ul li a {
+        @apply text-sm flex px-1 py-1 rounded text-gray-500 hover:bg-gray-700 hover:text-white;
+    }
+
+    .sidenav section.section ul li a.active {
+        @apply bg-gray-700 text-white;
+    }
+}

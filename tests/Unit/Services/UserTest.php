@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Services\User as UserService;
-
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);

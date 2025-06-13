@@ -6,10 +6,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\LoginSession;
 
 class User extends Authenticatable
 {
@@ -51,5 +53,26 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function loginSession(): HasMany
+    {
+        return $this->hasMany(LoginSession::class);
+    }
+
+    public function createLoginSession(string $sessionId)
+    {
+        return $this->loginSession()->create([
+            'session_id' => $sessionId,
+            'login_at' => now(),
+        ]);
+    }
+
+    public function logoutSession(string $sessionId): int
+    {
+        return $this->loginSession()->where('session_id', $sessionId)
+            ->update([
+                'logout_at' => now(),
+            ]);
     }
 }

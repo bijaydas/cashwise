@@ -1,0 +1,13 @@
+@layer utilities {
+    .alert {
+        @apply flex items-center space-x-1 rounded border p-2;
+    }
+
+    .alert.alert-success {
+        @apply bg-green-100 border-green-400 text-green-700;
+    }
+
+    .alert.alert-error {
+        @apply bg-red-100 border-red-400 text-red-500;
+    }
+}

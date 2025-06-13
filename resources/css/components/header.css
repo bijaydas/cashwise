@@ -1,0 +1,17 @@
+@layer utilities {
+    .header {
+        @apply border-b border-gray-200;
+    }
+
+    .header .profile-dropdown-trigger {
+        @apply flex items-center space-x-2 cursor-pointer border border-gray-300 rounded-full px-2 py-1 text-gray-500;
+    }
+
+    .header .profile-dropdown {
+        @apply absolute right-5 top-10 w-48 bg-white rounded-md shadow-md;
+    }
+
+    .header .profile-dropdown .item {
+        @apply flex items-center space-x-2 px-4 py-2 hover:bg-gray-700 cursor-pointer w-full text-sm text-gray-500 hover:text-white;
+    }
+}
