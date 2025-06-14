@@ -39,4 +39,3 @@ jobs:
 
     - name: Integration Tests
       run: php ./vendor/bin/pest
-Minimap
