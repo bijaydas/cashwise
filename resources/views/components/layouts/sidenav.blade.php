@@ -17,7 +17,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="{{ route('transaction.create') }}">
                     <x-heroicon-o-plus class="w-5 h-5 mr-2" />
                     <span>Create</span>
                 </a>

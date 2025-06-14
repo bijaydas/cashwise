@@ -15,5 +15,11 @@ class UserSeeder extends Seeder
             'password' => 'secretpassword',
             'role' => 'admin',
         ]);
+
+        $service->create([
+            'email' => 'me@bijaydas.com',
+            'password' => 'password',
+            'role' => 'admin',
+        ]);
     }
 }

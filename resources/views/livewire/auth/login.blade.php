@@ -9,11 +9,11 @@
 
         <form wire:submit="submit" action="#" class="flex flex-col gap-y-3">
 
-            <x-form.input name="email" id="email" type="email" label="Email" wire:model="email" />
+            <x-form.input name="email" id="email" type="email" label="Email" wire:model="email" autofocus />
 
             <x-form.input name="password" id="password" type="password" label="Password" wire:model="password" />
 
-            <button class="btn w-full">Login</button>
+            <button class="btn primary w-full">Login</button>
 
             <div class="text-right">
                 <a href="#" class="text-sm text-gray-500 hover:underline">Forgot password?</a>

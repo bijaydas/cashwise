@@ -1,6 +1,6 @@
 @props(['id', 'label' => '', 'placeholder' => '', 'type' => 'text', 'name' => '', 'value' => ''])
 
-<label for="{{ $id }}" class="form-control">
+<label for="{{ $id }}" class="form-control flex-1">
     <span class="label">{{ $label }}</span>
     <input
         id="{{ $id }}"

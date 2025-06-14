@@ -6,6 +6,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -73,5 +74,20 @@ class User extends Authenticatable
             ->update([
                 'logout_at' => now(),
             ]);
+    }
+
+    public function isOnline(): bool
+    {
+        return $this->loginSession()->where('logout_at', null)->exists();
+    }
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function createTransaction(array $data): Model
+    {
+        return $this->transactions()->create($data);
     }
 }

@@ -1,8 +1,8 @@
-<div class="flex h-screen overflow-hidden">
+<div class="flex h-screen">
     <x-layouts.sidenav />
-    <div class="flex-1">
+    <div class="flex-1 overflow-auto">
         <x-layouts.header />
-        <div class="h-full">
+        <div>
             {{ $slot }}
         </div>
     </div>

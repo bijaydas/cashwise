@@ -11,6 +11,13 @@ trait EnumHelper
         return self::cases();
     }
 
+    public static function getValuesForSelect(): array
+    {
+        return collect(self::getValues())->map(function ($value) {
+            return $value->value;
+        })->toArray();
+    }
+
     public static function dbInsert(): array
     {
         return collect(self::getValues())->map(function ($value) {

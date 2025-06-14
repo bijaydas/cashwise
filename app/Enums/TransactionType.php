@@ -6,10 +6,10 @@ namespace App\Enums;
 
 use App\Helpers\EnumHelper;
 
-enum AccountStatus: string
+enum TransactionType: string
 {
     use EnumHelper;
 
-    case ACTIVE = 'active';
-    case INACTIVE = 'inactive';
+    case DEBIT = 'debit';
+    case CREDIT = 'credit';
 }
