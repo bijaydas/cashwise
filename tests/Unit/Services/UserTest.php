@@ -10,13 +10,15 @@ uses(RefreshDatabase::class);
 it('should create a user', function () {
     $this->seed();
 
+    $email = fake()->email();
+
     $user = app(UserService::class)->create([
-        'email' => 'me@bijaydas.com',
+        'email' => $email,
         'password' => 'HelloWorld',
     ]);
 
     $this->assertDatabaseHas('users', [
-        'email' => 'me@bijaydas.com',
+        'email' => $email,
     ]);
 });
 

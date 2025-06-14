@@ -17,7 +17,7 @@ it('invalid email and wrong password', function () {
 
     $this->artisan('cashwise:create user')
         ->expectsQuestion('Enter name', 'Bijay Das>')
-        ->expectsQuestion('Enter email', 'mea@tbijaydas.com')
+        ->expectsQuestion('Enter email', 'mea@bijaydas.com')
         ->expectsQuestion('Enter password', 'hello')
         ->expectsOutput('Password must be at least 8 characters');
 });
@@ -27,7 +27,7 @@ it('should create a user', function () {
 
     $this->artisan('cashwise:create user')
         ->expectsQuestion('Enter name', 'Bijay Das>')
-        ->expectsQuestion('Enter email', 'me@bijaydas.com')
+        ->expectsQuestion('Enter email', fake()->email())
         ->expectsQuestion('Enter password', 'HelloWorld')
         ->expectsChoice('Select role', 'user', ['user', 'admin'])
         ->expectsOutput(sprintf('User created successfully. Visit %s to login.', URL::to('/login')));
