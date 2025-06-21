@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Enums\TransactionCategory;
+
 class SearchQueryParser
 {
     public function __construct(
@@ -75,6 +77,7 @@ class SearchQueryParser
                 if ($from == $to) {
                     return $from;
                 }
+
                 return [$from, $to];
             }
 
@@ -92,5 +95,20 @@ class SearchQueryParser
         }
 
         return null;
+    }
+
+    public function getCategory(): ?string
+    {
+        if (empty($this->category)) {
+            return null;
+        }
+
+        $categories = TransactionCategory::getValuesForSelect();
+
+        return collect(explode(',', $this->category))
+            ->filter(function ($item) use ($categories) {
+                return in_array($item, $categories);
+            })
+            ->join(',');
     }
 }

@@ -40,4 +40,10 @@ it('should validate date in search query', function () {
     expect($parser->getDate())->toBeNull();
 });
 
-
+it('should validate category', function () {
+    expect((new SearchQueryParser('category:food'))->getCategory())->toBe('food')
+        ->and((new SearchQueryParser('category:food,petrol'))->getCategory())->toBe('food,petrol')
+        ->and((new SearchQueryParser('category:food,rent'))->getCategory())->toBe('food,rent')
+        ->and((new SearchQueryParser('category:food,fake'))->getCategory())->toBe('food')
+        ->and((new SearchQueryParser('category:'))->getCategory())->toBeNull();
+});
