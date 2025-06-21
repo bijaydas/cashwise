@@ -18,3 +18,17 @@ if (! function_exists('title')) {
         return config('app.name');
     }
 }
+
+if (! function_exists('randomize')) {
+    function randomize(array $array): string
+    {
+        return $array[array_rand($array)];
+    }
+}
+
+if (! function_exists('isValidDateFormat')) {
+    function isValidDateFormat(string $date): bool
+    {
+        return preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date) === 1;
+    }
+}
