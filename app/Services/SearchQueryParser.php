@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Enums\TransactionCategory;
+use App\Enums\TransactionType;
+use App\Enums\TransactionMethod;
 
 class SearchQueryParser
 {
@@ -97,7 +99,7 @@ class SearchQueryParser
         return null;
     }
 
-    public function getCategory(): ?string
+    public function getCategory(): ?array
     {
         if (empty($this->category)) {
             return null;
@@ -105,10 +107,84 @@ class SearchQueryParser
 
         $categories = TransactionCategory::getValuesForSelect();
 
-        return collect(explode(',', $this->category))
+        $result = collect(explode(',', $this->category))
             ->filter(function ($item) use ($categories) {
                 return in_array($item, $categories);
             })
-            ->join(',');
+            ->toArray();
+
+        if (empty($result)) {
+            return null;
+        }
+
+        return $result;
+    }
+
+    public function getAmount(): string|array|null
+    {
+        if (empty($this->amount)) {
+            return null;
+        }
+
+        if (str_contains($this->amount, '..')) {
+            $amounts = explode('..', $this->amount);
+            if ($amounts[0] && $amounts[1]) {
+                return [$amounts[0], $amounts[1]];
+            }
+
+            if ($amounts[0]) {
+                return $amounts[0];
+            }
+
+            if ($amounts[1]) {
+                return $amounts[1];
+            }
+
+            return null;
+        }
+
+        return $this->amount;
+    }
+
+    public function getType(): ?array
+    {
+        if (empty($this->type)) {
+            return null;
+        }
+
+        $types = TransactionType::getValuesForSelect();
+
+        $result = collect(explode(',', $this->type))
+            ->filter(function ($item) use ($types) {
+                return in_array($item, $types);
+            })
+            ->toArray();
+
+        if (empty($result)) {
+            return null;
+        }
+
+        return $result;
+    }
+
+    public function getMethod(): ?array
+    {
+        if (empty($this->method)) {
+            return null;
+        }
+
+        $methods = TransactionMethod::getValuesForSelect();
+
+        $result = collect(explode(',', $this->method))
+            ->filter(function ($item) use ($methods) {
+                return in_array($item, $methods);
+            })
+            ->toArray();
+
+        if (empty($result)) {
+            return null;
+        }
+
+        return $result;
     }
 }
