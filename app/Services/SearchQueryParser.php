@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Enums\TransactionCategory;
-use App\Enums\TransactionType;
 use App\Enums\TransactionMethod;
+use App\Enums\TransactionType;
 
 class SearchQueryParser
 {

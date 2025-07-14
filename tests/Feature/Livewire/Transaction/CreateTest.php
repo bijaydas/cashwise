@@ -34,7 +34,7 @@ it('create transaction', function () {
         ->set('form.category', 'food')
         ->set('form.summary', 'test')
         ->set('form.description', 'test')
-        ->call('save')
+        ->call('submit')
         ->assertSee('Transaction created successfully');
 
     $this->assertDatabaseHas('transactions', [

@@ -90,4 +90,13 @@ class User extends Authenticatable
     {
         return $this->transactions()->create($data);
     }
+
+    public function getUserName(): string
+    {
+        if (! $this->name) {
+            return $this->email;
+        }
+
+        return $this->name;
+    }
 }

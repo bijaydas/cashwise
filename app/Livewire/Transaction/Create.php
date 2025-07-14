@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Transaction;
 
 use App\Livewire\Forms\TransactionForm;
@@ -11,9 +13,16 @@ class Create extends Component
 {
     public TransactionForm $form;
 
-    public function save(): void
+    public function mount(): void
+    {
+        $this->form->date = now()->format('Y-m-d');
+    }
+
+    public function submit(): void
     {
         $this->form->store();
+
+        $this->resetFields();
     }
 
     public function resetFields(): void
@@ -31,6 +40,9 @@ class Create extends Component
                 'methods' => $cache['method'],
                 'types' => $cache['type'],
             ])
-            ->layoutData(['title' => title('Create Transaction')]);
+            ->layoutData([
+                'title' => title('Create Transaction'),
+                'heading' => 'Create Transaction',
+            ]);
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Auth\LogoutController;
+declare(strict_types=1);
+
 use App\Livewire\Auth\Login;
-use App\Livewire\Dashboard;
+use App\Livewire\Home;
 use App\Livewire\Transaction\Create as CreateTransaction;
 use Illuminate\Support\Facades\Route;
 
@@ -11,8 +12,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', Dashboard::class)->name('dashboard');
-    Route::post('/logout', LogoutController::class)->name('logout');
+    Route::get('/', Home::class)->name('home');
 
     Route::prefix('transaction')->name('transaction.')->group(function () {
         Route::get('/create', CreateTransaction::class)->name('create');

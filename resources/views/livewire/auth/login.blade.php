@@ -1,25 +1,33 @@
-<div>
-    <div class="w-1/4 mx-auto mt-10">
-        <div>
-            <a href="#">
-                <img src="{{ asset('images/tmp/logo.png') }}" alt="logo" class="w-24 mx-auto">
-            </a>
-            <h1 class="text-center text-3xl font-bold">Welcome back</h1>
-        </div>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="w-11/12 lg:w-1/2 mx-auto bg-white shadow flex items-center gap-x-10 p-10 rounded-3xl">
+        <form wire:submit="submit" class="w-11/12 lg:w-1/2">
+            <flux:heading class="text-center font-semibold" size="xl">Welcome back</flux:heading>
 
-        <form wire:submit="submit" action="#" class="flex flex-col gap-y-3">
+            <div class="w-3/4 mx-auto flex flex-col gap-y-4">
+                <flux:field>
+                    <flux:label>Email</flux:label>
+                    <flux:input type="email" wire:model="email" />
+                    <flux:error for="email" />
+                </flux:field>
 
-            <x-form.input name="email" id="email" type="email" label="Email" wire:model="email" autofocus />
+                <flux:field>
+                    <flux:label>Password</flux:label>
+                    <flux:input type="password" wire:model="password" />
+                    <flux:error for="password" />
+                </flux:field>
 
-            <x-form.input name="password" id="password" type="password" label="Password" wire:model="password" />
+                <flux:button type="submit" variant="primary" class="w-full cursor-pointer">Login</flux:button>
 
-            <button class="btn primary w-full">Login</button>
+                <div class="text-right">
+                    <a href="#" class="text-sm text-gray-500 hover:underline">Forgot password?</a>
+                </div>
 
-            <div class="text-right">
-                <a href="#" class="text-sm text-gray-500 hover:underline">Forgot password?</a>
+                @include('partials.form-feedback')
             </div>
-
-            @include('shared.response')
         </form>
+
+        <div class="hidden lg:block lg:w-1/2">
+            <img src="{{ asset('images/login.jpg') }}" alt="login" class="rounded-3xl" />
+        </div>
     </div>
 </div>

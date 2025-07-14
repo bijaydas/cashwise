@@ -18,10 +18,10 @@ class TransactionForm extends Form
     public string $type = 'debit';
 
     #[Validate('required')]
-    public string $method = '';
+    public string $method = 'cash';
 
     #[Validate('required')]
-    public string $category = '';
+    public string $category = 'food';
 
     public string $summary = '';
 
