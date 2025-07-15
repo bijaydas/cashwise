@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Enums\TransactionCategory;
 use App\Enums\TransactionMethod;
 use App\Enums\TransactionType;
+use Illuminate\Support\Facades\Schema;
 
 class SearchQueryParser
 {
@@ -18,6 +19,7 @@ class SearchQueryParser
         public string $amount = '',
         public string $type = '',
         public string $date = '',
+        public string $orderBy = '',
     ) {
         $this->setup();
     }
@@ -53,6 +55,10 @@ class SearchQueryParser
 
             if (str_starts_with($chunk, 'date:')) {
                 $this->date = str_replace('date:', '', $chunk);
+            }
+
+            if (str_starts_with($chunk, 'orderBy:')) {
+                $this->orderBy = str_replace('orderBy:', '', $chunk);
             }
         }
     }
@@ -186,5 +192,16 @@ class SearchQueryParser
         }
 
         return $result;
+    }
+
+    public function getOrderBy(): ?string
+    {
+        $columns = Schema::getcolumnListing('transactions');
+
+        if (! in_array($this->orderBy, $columns)) {
+            return null;
+        }
+
+        return $this->orderBy;
     }
 }

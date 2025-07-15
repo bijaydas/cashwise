@@ -13,7 +13,7 @@
 
                 <flux:navlist.group expandable heading="Transactions" class="hidden lg:grid">
                     <flux:navlist.item href="{{ route('transaction.create') }}">Create</flux:navlist.item>
-                    <flux:navlist.item href="#">Home</flux:navlist.item>
+                    <flux:navlist.item href="{{ route('transaction.index') }}">Home</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

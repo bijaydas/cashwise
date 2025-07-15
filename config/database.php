@@ -171,4 +171,8 @@ return [
 
     ],
 
+    'pagination' => [
+        'transactions' => 50,
+    ],
+
 ];

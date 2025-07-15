@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 use App\Services\SearchQueryParser;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
 
 it('search-query: date', function () {
     $query = 'date:2021-01-01';
@@ -83,4 +86,36 @@ it('search-query: method', function () {
     $result = (new SearchQueryParser('method:cash,upi'))->getMethod();
     expect($result[0])->toBe('cash')
         ->and($result[1])->toBe('upi');
+});
+
+it('search-query: orderBy', function () {
+
+    $this->seed();
+
+    expect((new SearchQueryParser('orderBy:'))->getOrderBy())->toBeNull()
+        ->and((new SearchQueryParser('orderBy:fake'))->getOrderBy())->toBeNull();
+
+    $result = (new SearchQueryParser('orderBy:id'))->getOrderBy();
+    expect($result)->toBe('id');
+
+    $result = (new SearchQueryParser('orderBy:date'))->getOrderBy();
+    expect($result)->toBe('date');
+
+    $result = (new SearchQueryParser('orderBy:type'))->getOrderBy();
+    expect($result)->toBe('type');
+
+    $result = (new SearchQueryParser('orderBy:category'))->getOrderBy();
+    expect($result)->toBe('category');
+
+    $result = (new SearchQueryParser('orderBy:amount'))->getOrderBy();
+    expect($result)->toBe('amount');
+
+    $result = (new SearchQueryParser('orderBy:method'))->getOrderBy();
+    expect($result)->toBe('method');
+
+    $result = (new SearchQueryParser('orderBy:created_at'))->getOrderBy();
+    expect($result)->toBe('created_at');
+
+    $result = (new SearchQueryParser('orderBy:updated_at'))->getOrderBy();
+    expect($result)->toBe('updated_at');
 });
