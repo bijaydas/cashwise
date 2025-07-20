@@ -25,10 +25,18 @@
             @foreach ($transactions as $transaction)
                 <tr class="text-gray-700 text-center border-b border-gray-100">
                     <td class="p-1">{{ $transaction->date->format(auth()->user()->date_format) }}</td>
-                    <td class="p-1">{{ $transaction->amount }}</td>
-                    <td class="p-1">{{ $transaction->category }}</td>
-                    <td class="p-1">{{ $transaction->method }}</td>
-                    <td class="p-1">{{ $transaction->type }}</td>
+                    <td class="p-1">
+                        <x-partials.transaction-amount :amount="$transaction->amount" :type="$transaction->type" />
+                    </td>
+                    <td class="p-1">
+                        <x-partials.transaction-category :category="$transaction->category" />
+                    </td>
+                    <td class="p-1">
+                        <x-partials.transactionMethod :method="$transaction->method" />
+                    </td>
+                    <td class="p-1">
+                        <x-partials.transaction-type :type="$transaction->type" />
+                    </td>
                     <td class="p-1 text-left">{{ $transaction->summary }}</td>
                     <td class="p-1">
                         <flux:button type="button" size="sm">Edit</flux:button>
