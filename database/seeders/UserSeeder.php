@@ -10,11 +10,6 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $service = new User;
-        $service->create([
-            'email' => 'test@test.com',
-            'password' => 'secretpassword',
-            'role' => 'admin',
-        ]);
 
         $service->create([
             'email' => 'me@bijaydas.com',

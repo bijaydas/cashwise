@@ -25,8 +25,6 @@ class TransactionForm extends Form
 
     public string $summary = '';
 
-    public string $description = '';
-
     public function store(): void
     {
         $this->validate();

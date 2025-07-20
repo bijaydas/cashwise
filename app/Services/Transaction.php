@@ -18,7 +18,6 @@ class Transaction
             'method' => $data['method'],
             'category' => $data['category'],
             'summary' => $data['summary'],
-            'description' => $data['description'],
         ]);
     }
 

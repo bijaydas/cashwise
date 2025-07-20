@@ -48,12 +48,6 @@
                 <flux:textarea wire:model="form.summary" />
                 <flux:error name="form.summary" />
             </flux:field>
-
-            <flux:field>
-                <flux:label badge="Optional">Description</flux:label>
-                <flux:textarea wire:model="form.description" />
-                <flux:error name="form.description" />
-            </flux:field>
         </div>
 
         <div class="flex justify-end gap-2 items-center">

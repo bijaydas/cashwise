@@ -39,7 +39,7 @@ it('create transaction', function () {
 
     $this->assertDatabaseHas('transactions', [
         'user_id' => $user->id,
-        'date' => '2021-01-01',
+        'date' => '2021-01-01 00:00:00',
         'amount' => 1000,
         'type' => 'debit',
         'method' => 'cash',

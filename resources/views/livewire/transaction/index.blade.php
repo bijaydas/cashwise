@@ -24,7 +24,7 @@
             <tbody>
             @foreach ($transactions as $transaction)
                 <tr class="text-gray-700 text-center border-b border-gray-100">
-                    <td class="p-1">{{ $transaction->date }}</td>
+                    <td class="p-1">{{ $transaction->date->format(auth()->user()->date_format) }}</td>
                     <td class="p-1">{{ $transaction->amount }}</td>
                     <td class="p-1">{{ $transaction->category }}</td>
                     <td class="p-1">{{ $transaction->method }}</td>

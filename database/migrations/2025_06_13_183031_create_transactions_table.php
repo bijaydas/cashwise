@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string('category', 20)->comment('It should be food, travel, etc.');
             $table->decimal('amount', 10, 2);
             $table->string('method', 30)->default(TransactionMethod::CASH->value)->comment('It should be cash, upi, credit card etc.');
-
             $table->string('summary', 255)->comment('The summary of the transaction')->nullable();
-            $table->text('description')->nullable();
 
             $table->timestamps();
         });

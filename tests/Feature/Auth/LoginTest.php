@@ -16,8 +16,8 @@ it('login page visible', function () {
 it('user can login', function () {
     $this->seed();
     Livewire::test(Login::class)
-        ->set('email', 'test@test.com')
-        ->set('password', 'secretpassword')
+        ->set('email', 'me@bijaydas.com')
+        ->set('password', 'password')
         ->call('submit')
         ->assertRedirect('/');
 });

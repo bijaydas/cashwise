@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\AccountStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,11 +14,20 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('nickname')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->string('account_status', 50)->default(AccountStatus::ACTIVE->value);
+            $table->string('date_format', 10)->default('d/m/Y')->comment('The date format for the user');
+            $table->string('time_format', 10)->default('h:i A')->comment('The time format for the user');
+            $table->date('date_of_birth')->nullable();
+            $table->date('date_of_anniversary')->nullable();
+            $table->date('date_joined')->useCurrent();
+            $table->string('gender', 10)->nullable();
+            $table->string('primary_phone', 20)->nullable();
+            $table->string('secondary_phone', 20)->nullable();
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

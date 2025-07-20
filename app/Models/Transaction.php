@@ -18,10 +18,18 @@ class Transaction extends Model
         'amount',
         'method',
         'summary',
-        'description',
-
         'user_id',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'date' => 'date',
+            'amount' => 'float',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+        ];
+    }
 
     public function user(): BelongsTo
     {

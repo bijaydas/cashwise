@@ -13,10 +13,10 @@ use Livewire\Component;
 class Login extends Component
 {
     #[Validate('required|email')]
-    public string $email = '';
+    public string $email = 'me@bijaydas.com';
 
     #[Validate('required')]
-    public string $password = '';
+    public string $password = 'password';
 
     public function submit()
     {
