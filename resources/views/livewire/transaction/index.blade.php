@@ -39,7 +39,7 @@
                     </td>
                     <td class="p-1 text-left">{{ $transaction->summary }}</td>
                     <td class="p-1">
-                        <flux:button type="button" size="sm">Edit</flux:button>
+                        <flux:button href="{{ route('transaction.edit', ['id' => $transaction->id]) }}" type="button" size="sm">Edit</flux:button>
                     </td>
                 </tr>
             @endforeach

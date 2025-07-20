@@ -6,7 +6,7 @@ use App\Services\Transaction;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class TransactionForm extends Form
+class TransactionStoreForm extends Form
 {
     #[Validate('required|date')]
     public string $date = '';

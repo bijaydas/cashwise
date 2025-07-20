@@ -45,6 +45,7 @@ class Index extends Component
             ->layoutData([
                 'title' => title('Transactions'),
                 'heading' => 'Transactions',
+                'description' => 'List of all your transactions.',
             ]);
     }
 }
