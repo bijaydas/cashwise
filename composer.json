@@ -3,9 +3,16 @@
     "name": "bijaydas/cashwise",
     "type": "project",
     "description": "A personal finance management tool",
-    "keywords": [
-        "bijaydas",
-        "cashwise"
+    "keywords": ["bijaydas", "cashwise"],
+    "support": {
+        "issues": "https://github.com/bijaydas/cashwise/issues",
+        "source": "https://github.com/bijaydas/cashwise"
+    },
+    "authors": [
+        {
+            "name": "Bijay Das",
+            "email": "me@bijaydas.com"
+        }
     ],
     "license": "MIT",
     "require": {
