@@ -13,17 +13,17 @@
         </thead>
 
         <tbody>
-            @if ($users->count() === 0)
-                <tr>
-                    <td colspan="5" class="text-center">No data found</td>
-                </tr>
-            @endif
-
             @foreach($users as $user)
                 <tr class="border-b border-zinc-200">
-                    <td class="text-center py-1">{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
+                    <td class="text-center py-2">
+                        <flux:text>{{ $user->id }}</flux:text>
+                    </td>
+                    <td>
+                        <flux:text>{{ $user->name }}</flux:text>
+                    </td>
+                    <td>
+                        <flux:text>{{ $user->email }}</flux:text>
+                    </td>
                     <td class="text-center">
                         <x-partials.user-role role="{{ $user->getRoleNames()->first() }}" />
                     </td>
@@ -31,7 +31,9 @@
                         <x-partials.account-status status="{{ $user->account_status }}" />
                     </td>
                     <td class="text-center">
-                        {{ $user->created_at->diffForHumans() }}
+                        <flux:text>
+                            {{ $user->created_at->diffForHumans() }}
+                        </flux:text>
                     </td>
                     <td class="text-center">
                         <flux:button href="{{ route('admin.user.edit', ['id'=> $user->id]) }}" size="sm">Edit</flux:button>
