@@ -21,6 +21,11 @@
                 <flux:radio value="admin" label="Admin" description="Can do anything." />
                 <flux:radio value="user" label="User" description="User can only do basic things." />
             </flux:radio.group>
+
+            <flux:radio.group label="Account status" wire:model="form.account_status">
+                <flux:radio value="active" label="Active" description="Account is good." />
+                <flux:radio value="inactive" label="Inactive" description="Can't login." />
+            </flux:radio.group>
         </div>
 
         <div class="flex justify-end gap-4 mt-4">

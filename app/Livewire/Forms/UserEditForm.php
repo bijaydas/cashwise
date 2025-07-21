@@ -31,6 +31,8 @@ class UserEditForm extends Form
 
     public string $gender = 'not-specified';
 
+    public string $account_status = '';
+
     public function update(string $id): void
     {
         $validatedData = $this->validate([
@@ -42,6 +44,7 @@ class UserEditForm extends Form
             'date_of_anniversary' => 'nullable|date',
             'primary_phone' => 'nullable|string',
             'secondary_phone' => 'nullable|string',
+            'account_status' => 'required|in:active,inactive',
             'role' => [
                 'nullable',
                 Rule::in(UserRole::getValuesForSelect()),
@@ -71,5 +74,6 @@ class UserEditForm extends Form
         $this->secondary_phone = $user->secondary_phone ?? '';
         $this->gender = $user->gender ?? 'not-specified';
         $this->role = $user->getRoleNames()->first();
+        $this->account_status = $user->account_status;
     }
 }

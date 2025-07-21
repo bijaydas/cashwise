@@ -7,7 +7,7 @@ $color = match ($status) {
     default => 'green',
 };
 
-$statusText = 'InActive';
+$statusText = 'Inactive';
 
 if ($status === 'active') {
     $statusText = 'Active';

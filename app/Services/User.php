@@ -62,6 +62,7 @@ class User
                 'primary_phone' => $data['primary_phone'] ?? null,
                 'secondary_phone' => $data['secondary_phone'] ?? null,
                 'gender' => $data['gender'],
+                'account_status' => $data['account_status'],
             ]);
 
             $user->syncRoles($data['role']);
