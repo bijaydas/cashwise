@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Services\User as UserService;
-use App\Models\User as UserModel;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -23,8 +22,6 @@ class UserSeeder extends Seeder
 
     public function run(): void
     {
-        //$this->createDemoUser();
-
-        UserModel::factory()->count(10)->create();
+        $this->createDemoUser();
     }
 }

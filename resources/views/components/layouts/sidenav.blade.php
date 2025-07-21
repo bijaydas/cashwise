@@ -13,6 +13,16 @@
         </flux:navlist.group>
     </flux:navlist>
 
+    @if(auth()->user()->isAdmin())
+        <flux:text>Admin</flux:text>
+        <flux:navlist variant="outline">
+            <flux:navlist.group expandable heading="Users" class="hidden lg:grid">
+                <flux:navlist.item href="{{ route('admin.user.create') }}">Create</flux:navlist.item>
+                <flux:navlist.item href="{{ route('admin.user.index') }}">View</flux:navlist.item>
+            </flux:navlist.group>
+        </flux:navlist>
+    @endif
+
     <flux:spacer />
 
     <flux:navlist variant="outline">

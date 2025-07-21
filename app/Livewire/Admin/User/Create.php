@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire\Admin\User;
 
-use Livewire\Component;
-use Illuminate\View\View;
 use App\Livewire\Forms\UserStoreForm;
+use Illuminate\View\View;
+use Livewire\Component;
 
 class Create extends Component
 {

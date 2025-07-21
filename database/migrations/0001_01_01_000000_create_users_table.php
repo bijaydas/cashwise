@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+
             $table->string('name')->nullable();
             $table->string('nickname')->nullable();
             $table->string('email')->unique();
@@ -25,9 +26,10 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->date('date_of_anniversary')->nullable();
             $table->date('date_joined')->useCurrent();
-            $table->string('gender', 10)->nullable();
+            $table->string('gender', 30)->nullable();
             $table->string('primary_phone', 20)->nullable();
             $table->string('secondary_phone', 20)->nullable();
+
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

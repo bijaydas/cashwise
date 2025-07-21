@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire\Admin\User;
 
-use Livewire\Component;
-use Illuminate\View\View;
 use App\Models\User as UserModel;
+use Illuminate\View\View;
+use Livewire\Component;
 use Livewire\WithPagination;
 
 class Index extends Component

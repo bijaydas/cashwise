@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Models\User as UserModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class User
 {
@@ -31,9 +32,9 @@ class User
                 'nickname' => $data['nickname'] ?? null,
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
-                'status' => $data['status'] ?? 'active',
-                'date_of_birth' => $data['date_of_birth'] ?? null,
-                'date_of_anniversary' => $data['date_of_anniversary'] ?? null,
+                'account_status' => $data['account_status'] ?? 'active',
+                'date_of_birth' => empty($data['date_of_birth']) ? null : $data['date_of_birth'],
+                'date_of_anniversary' => empty($data['date_of_anniversary']) ? null : $data['date_of_anniversary'],
                 'primary_phone' => $data['primary_phone'] ?? null,
                 'secondary_phone' => $data['secondary_phone'] ?? null,
                 'gender' => $data['gender'] ?? null,
@@ -46,6 +47,27 @@ class User
         });
     }
 
+    public function update(string $userId, array $data)
+    {
+        $user = UserModel::findOrFail($userId);
+
+        return DB::transaction(function () use ($data, $user) {
+            $user->update([
+                'name' => $data['name'],
+                'nickname' => $data['nickname'],
+                'email' => $data['email'],
+                'password' => $data['password'] ? Hash::make($data['password']) : $user->password,
+                'date_of_birth' => empty($data['date_of_birth']) ? null : $data['date_of_birth'],
+                'date_of_anniversary' => empty($data['date_of_anniversary']) ? null : $data['date_of_anniversary'],
+                'primary_phone' => $data['primary_phone'] ?? null,
+                'secondary_phone' => $data['secondary_phone'] ?? null,
+                'gender' => $data['gender'],
+            ]);
+
+            $user->syncRoles($data['role']);
+        });
+    }
+
     /**
      * Check if the email is already taken.
      */
@@ -54,5 +76,10 @@ class User
         return UserModel::query()
             ->where('email', $email)
             ->exists();
+    }
+
+    public function findById(string $id): UserModel
+    {
+        return UserModel::findOrFail($id);
     }
 }

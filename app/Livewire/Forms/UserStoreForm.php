@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire\Forms;
 
+use App\Services\User as UserService;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
-use App\Services\User as UserService;
 
 class UserStoreForm extends Form
 {

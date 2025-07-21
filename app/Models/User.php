@@ -107,4 +107,9 @@ class User extends Authenticatable
 
         return $this->name;
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('admin');
+    }
 }

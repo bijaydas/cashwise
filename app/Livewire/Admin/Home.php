@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Livewire\Admin;
 
-use Livewire\Component;
 use Illuminate\View\View;
+use Livewire\Component;
 
 class Home extends Component
 {
