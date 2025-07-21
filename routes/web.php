@@ -9,6 +9,7 @@ use App\Livewire\Transaction\Index as TransactionIndex;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
 
 Route::middleware('auth')->group(function () {
     Route::get('/', Home::class)->name('home');
