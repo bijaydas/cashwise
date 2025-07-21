@@ -7,6 +7,7 @@
                 <th class="text-left">Email</th>
                 <th>Role</th>
                 <th>Status</th>
+                <th>Created on</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -30,7 +31,10 @@
                         <x-partials.account-status status="{{ $user->account_status }}" />
                     </td>
                     <td class="text-center">
-                        <flux:button size="sm">Edit</flux:button>
+                        {{ $user->created_at->diffForHumans() }}
+                    </td>
+                    <td class="text-center">
+                        <flux:button href="{{ route('admin.user.edit', ['id'=> $user->id]) }}" size="sm">Edit</flux:button>
                     </td>
                 </tr>
             @endforeach

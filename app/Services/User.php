@@ -28,8 +28,15 @@ class User
             // Create the user.
             $user = UserModel::create([
                 'name' => $data['name'] ?? null,
+                'nickname' => $data['nickname'] ?? null,
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
+                'status' => $data['status'] ?? 'active',
+                'date_of_birth' => $data['date_of_birth'] ?? null,
+                'date_of_anniversary' => $data['date_of_anniversary'] ?? null,
+                'primary_phone' => $data['primary_phone'] ?? null,
+                'secondary_phone' => $data['secondary_phone'] ?? null,
+                'gender' => $data['gender'] ?? null,
             ]);
 
             // Assign the user to the default role.
